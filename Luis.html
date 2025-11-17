@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<style type="text/css">
+
+		#thing{
+			width:900px;
+			height:900px;
+			background-image:url("luis.png");
+			background-size:contain;
+			opacity:0;
+			/*left:0px;*/
+			position: absolute;
+
+		}
+		
+	</style>
+	
+</head>
+<body>
+
+	<div id="thing"></div>
+
+<script type="text/javascript">
+
+	thing.style.left="0px"
+	
+	document.addEventListener("click", function(){
+
+		thing.style.opacity="1"
+
+	})
+
+
+		document.addEventListener("keypress", function(){
+		thing.style.left=parseInt(thing.style.left)+10+"px"
+					console.log(thing.style.left)
+
+	})
+</script>
+
+<div>Me when Keymer got Eliminated :(
+	</div>
+	
+
+
+
+</body>
+</html>
