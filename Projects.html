@@ -12,23 +12,53 @@ div{
 	width:400px;
 	height:400px;
 	background-color: darkred;
+	border-radius:50%;
+	animation-name:change;
+	animation-iteration-count: infinite;
+	animation-duration: 1s;
+	color:blue;
+	font-size:50px;
+	text-align:center;
+}
+
+@keyframes change{
+	0%{
+		border-radius:50%;
+			background-color: darkred;
+
+	}
+
+	50%{
+		border-radius:0%;
+		background-color:gold;
+	}
+
+	100%{
+		border-radius:50%;
+			background-color: darkred;
+
+	}
 }
 
 	</style>	
 </head>
 
 <body>
-<p><a href="luis.html"> this is a link to my luis event listener</a></p>
+ 
+ 	<center><div>Amazing Projects!</div>
+
+
+
+<p><a href="Luis.html"> this is a link to my luis event listener</a></p>
 
 	<p><a href="mollySample.html"> this is a link to my halloween event listener</a></p>
 
 	<p><a href="JSN.png"> this is my goat
 	</a></p>
 
-<div>
 
-	
-</div>
+
+</center>
 
 </body>
 </html>
