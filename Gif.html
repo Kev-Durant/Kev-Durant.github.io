@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<style type="text/css">
+
+		#thing{
+			width:700px;
+			height:1000px;
+			background-image:url("cheb.png");
+			background-size:contain;
+			opacity:0;
+			/*left:0px;*/
+			position: absolute;
+
+		}
+		
+	</style>
+	
+</head>
+<body>
+
+	<div id="thing"></div>
+
+<script type="text/javascript">
+
+	thing.style.left="0px"
+	
+	document.addEventListener("click", function(){
+
+		thing.style.opacity="1"
+
+	})
+
+
+		document.addEventListener("keypress", function(){
+		thing.style.left=parseInt(thing.style.left)+10+"px"
+					console.log(thing.style.left)
+
+	})
+</script>
+
+<div>Me when Jsn got 4 points :(
+	</div>
+	
+
+
+
+</body>
+</html>
