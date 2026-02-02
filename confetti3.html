@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+body{
+background-color: blanchedalmond;
+}
+.confetti{
+width: 10px;
+height: 50px;
+background-color: dodgerblue;
+display: inline-block;
+border: 5px ;
+position: absolute;
+animation-name: swing3d;
+animation-duration: 1.2s;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+animation-timing-function: ease-in-out;
+transform: rotate(90deg);
+
+}
+@keyframes swing{
+from {
+transform: rotate(var(--starRot));
+}
+to {
+transform: rotate(var(--endRot));
+}
+}
+@keyframes swing3d {
+from{
+transform: rotateX(-180deg)rotateY(-180deg);
+
+}
+to {
+transform:rotateX(180deg) rotateY(180deg);
+
+}
+}
+
+
+</style>
+</head>
+<body>
+<button id="btn"> drop confetti</button>
+<input type="color" value="#00254d" id="colorPicker">
+<input type="range" min="1" max="10" step="1"value="10" id="slider">
+
+<script type="text/javascript">
+let dropConfettiBtn = document.getElementById("btn")
+let friends = ["kevin", "alex", "timmy", "theo", "arjun"]
+let colors = ["red", "green", "blue"]
+function makeConfetti (){
+let square = document.createElement("div")
+square.classList.add("confetti")
+document.body.appendChild(square)
+let r=Math.round(Math.random()*255)
+let g=Math.round(Math.random()*255)
+let b=Math.round(Math.random()*255)
+square.style.backgroundColor = "rgb("+r+", "+g+", "+b+")"
+let x = Math.round(Math.random()*2)
+
+let rotation = Math.random() * 360
+
+let startRot = Math.random() * -90 + "deg"
+let endRot = Math.random() * 90 + "deg"
+let randomColorIndex = Math.floor(Math.random() * colors. length)
+console.log(randomColorIndex)
+
+square.style.backgroundColor = colorPicker.value
+square.style.top = Math.random() * 1000 + "px"
+square.style.left = Math.random() * window.innerWidth + "px"
+square.style.transform = "rotate(" + rotation + "deg)"
+
+
+square.style.setProperty("--startRot", startRot)
+square.style.setProperty("--endRot", endRot)
+
+function fall(){
+let fallFactor = 10
+square.style.top = parseInt (square.style.top) + fallFactor +"px"
+}
+setInterval (fall, 100)
+
+}
+dropConfettiBtn.addEventListener("click", function() {
+console.log("i click it")
+for(let i = 0; i < 500; i++) {
+makeConfetti()
+}
+makeConfetti()
+
+// setInterval(makeConfetti, 50)
+})
+</script>
+
+</body>
+</html>

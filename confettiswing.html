@@ -8,19 +8,32 @@
 			background-color: blue;
 			display:inline-block;
 			position: absolute;
-			/*border:1px solid gray;
-			
-			
+			animation-name: swing;
+			animation-duration: 0.5s;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+			animation-timing-function: ease-in-out;
 		}
+		@keyframes swing {
+				from{
+					transform: rotate(var(--startRot));
+
+				}
+				to {
+					transform: rotate(var(--endRot));
+
+
+					}
+				}
+			}
 		</style>
 </head>
 
 <body>
-	<button id="btn"> drop confetti</button>
-	<input type="color" value="#ff0000" id="colorPicker">
 <script type="text/javascript">
-	let dropConfettiBtn = document.getElementById("btn")
-	let colorPicker = document.getElementById("colorPicker")
+	let my_students= ["kevin","alex", "gia"]
+	// my_students[1]
+	let colors = ["pink", "blue", "purple"]
 	function makeConfetti(){
 		let square = document.createElement("div")
 		square.classList.add("confetti")
@@ -28,9 +41,15 @@
 		let r= +Math.round(Math.random()*255)
 let g= Math.round(Math.random()*255)
 let b= Math.round(Math.random()*255)
-square.style.backgroundColor = "rgb("+r+", "+g+", "+b+")"
+// square.style.backgroundColor = "rgb("+r+", "+g+", "+b+")"
 let x = Math.round(Math.random()*2)
-let rotation = Math.random()* 360
+let rotation = Math.random()* -60 + "deg"
+let startRot = Math.random()* 60 +"deg"
+let endRot = Math.random()
+
+let randomColorIndex = Math.floor(Math.random() * colors.length)
+square.style.backgroundColor = colors[randomColorIndex]
+
 square.style.top = Math.random()*2000 + "px"
 square.style.left = Math.random()*2000 + "px"
 square.style.transform = "rotate(" + rotation + "deg)"
@@ -40,19 +59,15 @@ function fall(){
 
 	let fallFactor = 1
 	square.style.top = parseInt(square.style.top) + fallFactor + "px"
-
 	
 }
 setInterval(fall, 10)
-
-
-
 	}
 	// setInterval(makeConfetti,50)
-	dropConfettiBtn.addEventListener("click", function(){
-		console.log("i don't click it")
-		for(let i =0;i<10;i++){}
-	})
+	for(let i = 0; i < 67; i++) {
+		makeConfetti()
+	}
+	
 
 </script>
 </body>
