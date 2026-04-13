@@ -24,14 +24,30 @@
 				for(let j=0;j<15;j++){
 					let x= i * 100
 					let y=j * 100
+					let d = dist(x,y,mouseX,mouseY);
 					fill("pink")
-					circle(x-30, y-50, 30) //left ear
-					circle(x+30, y-50, 30) //right ear
+					push()
+					translate(x,y)
+					rotate(frameCount*0.01)
+					circle(0-30, 0-50, 30) //left ear
+					circle(0+30, 0-50, 30) //right ear
 					fill("tan")
-					circle(x,y,100) //face
+					circle(0,0,100) //face
 					strokeWeight(2)
-					arc(x, y, 50, 50, 0, PI);
-					text(i+","+j,x,y)
+				
+						arc(0, 0, 50, 50, 0, PI);
+					
+					
+					// text(i+","+j,x,y)
+					fill("white")
+					circle(0-20, 0-20, 20)
+					circle(0+20, 0-20, 20)
+
+					fill("black")
+					circle(0-20, 0-17, 10)
+					circle(0+20, 0-17, 10)
+
+					pop()
 				}
 
 			}
