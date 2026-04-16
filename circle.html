@@ -15,6 +15,7 @@
 		let i=0
 		function setup(){
 			createCanvas(1500,1500)
+			fill("blue")
 			console.log("king of the jungle")
 		}
 		function draw(){
@@ -28,7 +29,7 @@
 					fill("pink")
 					push()
 					translate(x,y)
-					rotate(frameCount*0.01)
+					rotate(frameCount*60)
 					circle(0-30, 0-50, 30) //left ear
 					circle(0+30, 0-50, 30) //right ear
 					fill("tan")
