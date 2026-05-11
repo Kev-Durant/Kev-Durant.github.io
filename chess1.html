@@ -15,16 +15,14 @@
         }
 
         function draw() {
-            // 1. Draw the main yellow background first
+           
             background(255, 204, 50); 
 
-            // 2. Draw a blue circle at the mouse's location
-            // A 50-pixel radius means the circle needs a diameter of 100
             noStroke();
             fill("blue");
             circle(mouseX, mouseY, 600);
 
-            // 3. Draw the grid of faces on top
+            
             for (let i = 0; i < 15; i++) {
                 for (let j = 0; j < 15; j++) {
                     let x = i * 100;
@@ -40,7 +38,7 @@
 
                     rotate(frameCount * 0.01);
 
-                    // Reset stroke for the faces so they have borders again
+                    
                     stroke(0);
                     strokeWeight(1);
                     
