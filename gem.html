@@ -9,76 +9,61 @@
 
 <body>
 	<script>
-		let randomNum
-		let point = 0
-		let timer = 30
+		let randomNum;
+		let point = 0;
 		
-
 		function setup() {
 			createCanvas(1500, 1500);
-			randomNum = int(random(224))
+			console.log("king of the jungle");
+			// 15x15 grid means 225 total circles (0 to 224). 
+			// random(225) ensures it can pick the very last circle too.
+			randomNum = int(random(225));
 		}
 
 		function draw() {
-			
 			background(255, 204, 50); 
 
-			//noStroke();
-            //fill("yellow");
-            //circle(mouseX, mouseY, 300);
+			noStroke();
+			fill("blue");
+			circle(mouseX, mouseY, 600);
 
-           
-            fill("blue")
-            
-            textSize(32);
-            text("Score:"+ point, 100, 50)
-            
+			fill("blue");
+			textSize(32); // Made the score a bit bigger so it's easier to see
+			text("Score: " + point, 100, 50);
 
 			for (let i = 0; i < 15; i++) {
 				for (let j = 0; j < 15; j++) {
 					let x = i * 100;
 					let y = j * 100;
-					
-					let num = i * 15 + j
-
+					let num = i * 15 + j;
 					let d = dist(x, y, mouseX, mouseY);
 
 					push();
 					translate(x, y);
-
-					
-					
 					
 					let scaleFactor = map(d, 0, 300, 1.5, 0.5, true); 
 					scale(scaleFactor);
 
-					
-
-					
-					
-
-
 					rotate(frameCount * 0.01);
 
 					stroke(0);
-                    strokeWeight(1);
+					strokeWeight(1);
 
 					fill("pink");
 					circle(-30, -50, 30); 
 					circle(30, -50, 30);  
-                    
+					
+					// Color the target circle red, others tan
 					if (num === randomNum) {
-						fill("#e3b16b")
+						fill("red");
 					} else {
 						fill("tan");
 					}
-										
-					circle(0, 0, 100);   
-                    
+					
+					circle(0, 0, 100);    
 					
 					strokeWeight(2);
 					arc(0, 0, 50, 50, 0, PI);
-					
 					
 					fill("white");
 					circle(-20, -20, 20); 
@@ -88,32 +73,35 @@
 					circle(-20, -17, 10); 
 					circle(20, -17, 10);  
 
-					//fill("green")
-					//text(num, 0,0)
+					fill("green");
+					textSize(12);
+					text(num, -10, 5); // Shifted the text slightly to center it on the nose
 					pop();
 				}
 			}
 		}
 
-		function mousePressed(){for (let i = 0; i < 15; i++) {
+		// This built-in p5 function only fires ONCE per click
+		function mousePressed() {
+			for (let i = 0; i < 15; i++) {
 				for (let j = 0; j < 15; j++) {
 					let x = i * 100;
 					let y = j * 100;
 					let num = i * 15 + j;
 					let d = dist(x, y, mouseX, mouseY);
 					
-					
+					// Calculate the exact visual radius using your scale logic
 					let scaleFactor = map(d, 0, 300, 1.5, 0.5, true);
 					let hitRadius = 50 * scaleFactor; 
 
-					
+					// If the mouse is inside THIS specific circle
 					if (d < hitRadius) {
-						
+						// Check if it's the RED circle
 						if (num === randomNum) {
-							point++; 
-							randomNum = int(random(225)); 
+							point++; // Add exactly 1 point
+							randomNum = int(random(225)); // Pick a new target
 						}
-						return; 
+						return; // Stop checking other circles once we register a hit
 					}
 				}
 			}
